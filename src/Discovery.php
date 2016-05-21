@@ -2,7 +2,6 @@
 
 namespace BitWasp\ElectrumServer;
 
-
 use Evenement\EventEmitter;
 use Phergie\Irc\Client\React\Client;
 use Phergie\Irc\Client\React\WriteStream;
@@ -163,7 +162,7 @@ class Discovery extends EventEmitter
         $userStr = $message['params'][3];
         $users = explode(" ", $userStr);
         foreach ($users as $user) {
-            if (substr($user, 0, 2) === 'E_')  {
+            if (substr($user, 0, 2) === 'E_') {
                 $this->users[] = $user;
             }
         }
@@ -214,14 +213,13 @@ class Discovery extends EventEmitter
     {
         $promise = [];
         foreach ($this->users as $user) {
-
             $deferred = new Deferred();
             $this->serverDeferred[$user] = $deferred;
             $promise[] = $deferred->promise();
             $write->ircWho($user);
         }
 
-        \React\Promise\all($promise)->then(function ( $serverList) use ($write) {
+        \React\Promise\all($promise)->then(function ($serverList) use ($write) {
             $this->connected = false;
             $write->close();
             $this->deferred->resolve($serverList);

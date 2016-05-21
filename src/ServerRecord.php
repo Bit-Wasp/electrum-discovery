@@ -2,7 +2,6 @@
 
 namespace BitWasp\ElectrumServer;
 
-
 class ServerRecord
 {
     /**
@@ -128,5 +127,4 @@ class ServerRecord
     {
         return $this->ssl;
     }
-
 }
