@@ -1,0 +1,10 @@
+{
+  "require": {
+    "phergie/phergie-irc-client-react": "~3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "BitWasp\\ElectrumServer\\": "src/"
+    }
+  }
+}
