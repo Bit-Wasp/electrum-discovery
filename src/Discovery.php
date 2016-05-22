@@ -79,12 +79,13 @@ class Discovery extends EventEmitter
 
         $connection = (new Connection())
             ->setServerHostname('irc.freenode.net')
-            ->setServerPort(6667)
+            ->setServerPort(6697)
             ->setNickname($nick)
             ->setUsername($nick)
             ->setHostname('none')
             ->setServername('freenode')
             ->setRealname('none')
+            ->setOption('transport', 'ssl')
         ;
 
         $discovery = new Discovery($client);
